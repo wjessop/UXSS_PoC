@@ -26,6 +26,9 @@ Now navigate to http://192.169.1.100:8080/ in IE.
 -protected_url:
 > The target URL you want to perform the UXSS on
 
+-use_sleep
+> Set to no to use the alert() method of exploitation
+
 ## Authors
 
 * [Will Jessop](mailto:will@willj.net)

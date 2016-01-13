@@ -16,14 +16,16 @@ var (
 )
 
 type TemplateVars struct {
-	Addr         string
-	NonTargetURL string
+	Addr      string
+	TargetURL string
+	UseSleep  string
 }
 
 func serveHTTP() {
 	template_vars = TemplateVars{
-		Addr:         *addr,
-		NonTargetURL: *non_target_url,
+		Addr:      *addr,
+		TargetURL: *target_url,
+		UseSleep:  *use_sleep,
 	}
 
 	mux := http.NewServeMux()
@@ -61,8 +63,8 @@ func serveRedirect() http.Handler {
 			http.Error(w, "Not found", 404)
 			return
 		}
-		log.Println("Redirecting to", *protected_url)
-		http.Redirect(w, req, *protected_url, 302)
+		log.Println("Redirecting to", *non_target_url)
+		http.Redirect(w, req, *non_target_url, 302)
 	})
 }
 

