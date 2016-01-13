@@ -2,6 +2,8 @@
 
 PoC for a [UXSS exploit](https://blog.innerht.ml/ie-uxss/).
 
+There are [releases](https://github.com/wjessop/UXSS_PoC/releases) if you don't want to have to build this tool yourself.
+
 ## Building
 
 Get Goop if you don't already have it:
