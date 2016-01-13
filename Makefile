@@ -12,3 +12,8 @@ deps:
 
 update_deps:
 	$(GOPATH)/bin/goop update
+
+releases:
+	$(GOPATH)/bin/goop go build -o bin/uxss.mac
+	GOOS=linux $(GOPATH)/bin/goop go build -o bin/uxss.linux
+	GOOS=linux $(GOPATH)/bin/goop go build -o bin/uxss.exe
