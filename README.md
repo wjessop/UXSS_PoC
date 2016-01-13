@@ -23,8 +23,11 @@ Now navigate to http://192.169.1.100:8080/ in IE.
 -addr:
 > The address of the web server we will listen on
 
--protected_url:
+-target_url:
 > The target URL you want to perform the UXSS on
+
+-non_target_url
+> A URL to use in the redirect, necessary for the exploit, but the default is probably fine
 
 -use_sleep
 > Set to no to use the alert() method of exploitation
