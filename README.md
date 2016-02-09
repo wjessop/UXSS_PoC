@@ -6,9 +6,9 @@ There are [releases](https://github.com/wjessop/UXSS_PoC/releases) if you don't 
 
 ## Building
 
-Get Goop if you don't already have it:
+Get some dependant utils:
 
-    $ go get -u github.com/nitrous-io/goop
+    $ make setup
 
 Now build:
 
@@ -16,7 +16,7 @@ Now build:
 
 ## Running it
 
-    $ bin/uxss -addr 192.169.1.100:8080 -protected_url https://target-url.com/
+    $ bin/uxss -addr 192.169.1.100:8080 -target_url https://target-url.com/
 
 Now navigate to http://192.169.1.100:8080/ in IE.
 
