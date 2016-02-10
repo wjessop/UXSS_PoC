@@ -34,6 +34,9 @@ Now navigate to http://192.169.1.100:8080/ in IE.
 -use_sleep
 > Set to no to use the alert() method of exploitation
 
+-template
+> Path to a custom template. See https://github.com/wjessop/UXSS_PoC/blob/master/data/templates/home.html for the variables that will be interpolated. This is useful for demonstrating a more detailed attack. If not specified a simple HTML template will be used.
+
 ## Authors
 
 * [Will Jessop](mailto:will@willj.net)
