@@ -1,6 +1,8 @@
-all:
-	go-bindata data/...
+all: assets
 	goop go build -o bin/uxss
+
+assets:
+	go-bindata data/...
 
 run: all
 	bin/uxss -addr localhost:8080
@@ -14,7 +16,7 @@ deps:
 update_deps:
 	goop update
 
-releases:
+releases: assets
 	goop go build -o bin/uxss.mac
 	GOOS=linux goop go build -o bin/uxss.linux
 	GOOS=linux goop go build -o bin/uxss.exe

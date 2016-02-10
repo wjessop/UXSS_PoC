@@ -15,14 +15,6 @@ var (
 	template_vars TemplateVars
 )
 
-func init() {
-	bytes, err := Asset("data/templates/home.html")
-	if err != nil {
-		panic(err)
-	}
-	homeTempl = template.Must(template.New("home").Parse(string(bytes)))
-}
-
 type TemplateVars struct {
 	Addr      string
 	TargetURL string
@@ -58,6 +50,20 @@ func serveHome() http.Handler {
 		if req.URL.Path != "/" {
 			http.Error(w, "Not found", 404)
 			return
+		}
+
+		if *template_file != "" {
+			if _, err := os.Stat(*template_file); os.IsNotExist(err) {
+				panic("Custom template file not found")
+			}
+
+			homeTempl = template.Must(template.ParseFiles(*template_file))
+		} else {
+			bytes, err := Asset("data/templates/home.html")
+			if err != nil {
+				panic(err)
+			}
+			homeTempl = template.Must(template.New("home").Parse(string(bytes)))
 		}
 
 		w.Header().Set("Content-Type", "text/html; charset=utf-8")
