@@ -11,9 +11,17 @@ import (
 )
 
 var (
-	homeTempl     = template.Must(template.ParseFiles("templates/home.html"))
+	homeTempl     *template.Template
 	template_vars TemplateVars
 )
+
+func init() {
+	bytes, err := Asset("data/templates/home.html")
+	if err != nil {
+		panic(err)
+	}
+	homeTempl = template.Must(template.New("home").Parse(string(bytes)))
+}
 
 type TemplateVars struct {
 	Addr      string
